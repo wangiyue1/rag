@@ -30,7 +30,7 @@ class DataPreparationModule:
     }
     CATEGORY_LABELS = list(CATEGORY_MAPPING.values())
     DIFFICULTY_LABELS =  ['非常简单', '简单', '中等', '困难', '非常困难']
-    def __init__(self, data_path: str):
+    def __init__(self, data_path: str = "/workspaces/HowToCook/dishes"):
         self.data_path = data_path
         self.parent_documents: List[Document] = []
         self.children_documents: List[Document] = []

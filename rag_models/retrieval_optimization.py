@@ -134,7 +134,9 @@ if __name__ == "__main__":
         index_construction.save_index()
             
     retrievalOptimization = RetrievalOptimizationModule(chunks=chunks, vectorstore=index_construction.vector_store)
-    results = retrievalOptimization.hybrid_retrieve("牛肉")
+    # results = retrievalOptimization.hybrid_retrieve("牛肉")
+    filters = {"difficulty": "中等"}
+    results = retrievalOptimization.metadata_filtered_search("牛肉", filters=filters, top_k=3)
     
     print(f"\n混合检索结果数量: {len(results)}")
     for i, result in enumerate(results):
