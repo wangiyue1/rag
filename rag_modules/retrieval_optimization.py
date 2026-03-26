@@ -5,8 +5,8 @@ from langchain_core.documents import Document
 from langchain_community.vectorstores import FAISS
 from langchain_community.retrievers import BM25Retriever
 
-from index_construction import IndexConstructionModule
-from data_preparation import DataPreparationModule
+from .index_construction import IndexConstructionModule
+from .data_preparation import DataPreparationModule
 
 logger = logging.getLogger(__name__)
 

@@ -8,9 +8,9 @@ from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 
-from data_preparation import DataPreparationModule
-from index_construction import IndexConstructionModule
-from retrieval_optimization import RetrievalOptimizationModule
+from .data_preparation import DataPreparationModule
+from .index_construction import IndexConstructionModule
+from .retrieval_optimization import RetrievalOptimizationModule
 
 logger = logging.getLogger(__name__)
 

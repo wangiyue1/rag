@@ -8,7 +8,7 @@ class RAGConfig:
     index_save_path: str = "./index"
     
     embedding_model: str ="BAAI/bge-small-zh-v1.5" 
-    llm_model: str = "glm-4.7-flash-free"
+    llm_model: str = "gpt-4.1-nano-free"
         
     temperature: float = 0.1
     max_tokens: int = 2048

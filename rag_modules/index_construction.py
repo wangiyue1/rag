@@ -6,7 +6,7 @@ from langchain_huggingface.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_core.documents import Document
 
-from data_preparation import DataPreparationModule
+from .data_preparation import DataPreparationModule
 logger = logging.getLogger(__name__)
 # logging.basicConfig(level=logging.INFO, force=True)
 

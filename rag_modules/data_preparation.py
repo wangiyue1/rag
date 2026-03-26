@@ -191,6 +191,42 @@ class DataPreparationModule:
         logger.info(f"从{len(child_chunks)}获取到{len(parent_docs)}个父文档: {', '.join(parent_infos)}")
         return parent_docs
     
+    def get_statistics(self) -> Dict[str, Any]:
+        docs = self.parent_documents
+        chunks = self.children_documents
+        
+        categories_count = {}
+        difficulty_count = {}
+        
+        for doc in docs:
+            category = doc.metadata.get("category", "未知分类")
+            categories_count[category] = categories_count.get(category, 0) + 1
+            
+            difficulty = doc.metadata.get("difficulty", "未知难度")
+            difficulty_count[difficulty] = difficulty_count.get(difficulty, 0) + 1
+        
+        return {
+            "total_documents": len(docs),
+            "total_chunks": len(chunks),
+            "categories": categories_count,
+            "difficulties": difficulty_count,
+            "avg_chunk_size": sum(chunk.metadata.get("chunk_size", 0) for chunk in chunks) / len(chunks) if chunks else 0
+        }
+    
+    @classmethod
+    def get_supported_categories(self) ->List[str]:
+        """
+        对外提供支持的菜品分类列表
+        """
+        return self.CATEGORY_LABELS
+
+    @classmethod
+    def get_supported_difficulties(self) -> List[str]:
+        """
+        对外提供支持的菜品难度列表
+        """
+        return self.DIFFICULTY_LABELS
+    
 if __name__ == "__main__":
     logger.info("开始数据准备模块测试")
     data_preparation = DataPreparationModule(data_path="/workspaces/HowToCook/dishes/aquatic")
